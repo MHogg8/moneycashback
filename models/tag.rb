@@ -2,7 +2,7 @@ require "pg"
 
 class Tag
 
-  attr_reader :name, 
+  attr_reader :id, :name 
 
   def initialize(params)
     @id = nil || params['id']
@@ -11,7 +11,7 @@ class Tag
 
 
   def save 
-    SqlRunner.run_sql("INSERT INTO tags (name) VALUES '#{name}'")
+    SqlRunner.run_sql("INSERT INTO tags (name) VALUES '#{@name}'")
     return last_entry
   end
 
@@ -21,9 +21,11 @@ class Tag
     return Tag.map_item(sql)
   end
 
+
   def update
     SqlRunner.run_sql("UPDATE tags SET name = '{#params['name']}'") #think this is params{name} because it is the update and is a new param not the initial one, check this out as not quite clear. Obviously the syntax for this different but it would be good to be clear in teh reason why this - actually - is it not because you are passing it a new param and not the intialzie one. This is teh only instance in which we change the data out with the intialization. 
   end
+
 
   def self.map_items(sql) #these both have sql parameters as the sql comes back in array of hashes and these functions sort them into instances of teh class. 
     tags = SqlRunner.run_sql(sql)
@@ -31,8 +33,9 @@ class Tag
     return result
   end
 
+
   def self.map_item(sql)
-    result = Tag.map_items
+    result = Tag.map_items(sql)
     return result.first
   end
 
@@ -40,6 +43,18 @@ class Tag
   def self.all
     sql = "SELECT * FROM tags"
     return Tag.map_items(sql)
+  end
+
+
+  def self.find(id)
+    tag = SqlRunner.run_sql("SELECT * FROM tags WHERE id = #{id}")
+    result = Tag.new(tag[0])
+    return result
+  end
+
+
+  def self.destroy(id)
+    SqlRunner.run_sql("DELETE * FROM tags WHERE id = #{id}")
   end
 
 

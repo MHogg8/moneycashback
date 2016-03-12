@@ -15,9 +15,9 @@ CREATE TABLE Tags(
 
 CREATE TABLE Transactions(
   id serial8 primary key,
-  amount INT8,
-  time varchar(255),
-  description varchar,
+  amount money,
+  day date,
+  description varchar(255),
   merchant_id INT8 references merchants(id),
   tag_id INT8 references tags(id)
 );

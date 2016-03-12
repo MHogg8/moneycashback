@@ -1,6 +1,11 @@
 require "pg"
+require_relative('../db/sql_runner')
+
+
 
 class Merchant
+
+  attr_reader :id, :name
 
   def initialize(params)
     @id = nil || params['id']
@@ -9,13 +14,13 @@ class Merchant
 
 
   def save
-    SqlRunner.run_sql("INSERT INTO merchants (name) VALUES '#{@name}'")
+    SqlRunner.run_sql("INSERT INTO merchants (name) VALUES ('#{@name}')")
     return last_entry
   end
 
 
   def last_entry
-    sql = "SELECT * FROM merchants ORDER BY DESC limit 1"
+    sql = "SELECT * FROM merchants ORDER BY id DESC limit 1"
     return Merchant.map_item(sql)
   end
 
@@ -32,7 +37,7 @@ class Merchant
   end
 
 
-  def self.map_items(sql)
+  def self.map_item(sql)
     result = Merchant.map_items(sql)
     return result.first
   end
@@ -43,14 +48,21 @@ class Merchant
     result = Merchants.map_items(sql)
   end
 
+
   def self.find(id)
     transaction = SqlRunner.run_sql("SELECT * FROM merchants WHERE id = #{id}")
     result = Merchant.new(transaction[0])
     return  result
   end
 
-  def self.destroy
+
+  def self.destroy(id)
     SqlRunner.run_sql("DELETE * FROM merchants WHERE id = #{id}")
+  end
+
+
+  def self.delete_all
+    SqlRunner.run_sql("DELETE FROM merchants")
   end
 
 end 

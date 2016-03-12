@@ -1,4 +1,5 @@
 require "pg"
+require_relative('../db/sql_runner')
 
 class Tag
 
@@ -11,7 +12,7 @@ class Tag
 
 
   def save 
-    SqlRunner.run_sql("INSERT INTO tags (name) VALUES '#{@name}'")
+    SqlRunner.run_sql("INSERT INTO tags (name) VALUES ('#{@name}')")
     return last_entry
   end
 
@@ -50,6 +51,11 @@ class Tag
     tag = SqlRunner.run_sql("SELECT * FROM tags WHERE id = #{id}")
     result = Tag.new(tag[0])
     return result
+  end
+
+
+  def self.delete_all
+    SqlRunner.run_sql("DELETE FROM tags")
   end
 
 

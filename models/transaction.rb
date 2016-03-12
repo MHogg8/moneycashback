@@ -1,27 +1,31 @@
 require "pg"
+require_relative('../db/sql_runner')
 
 class Transaction
 
+  attr_reader :id, :amount, :date, :tag_id, :merchant_id
+
   def initialize(params)
     @id = nil || params['id']
-    @amount = params['amount']
-    @date = params['date']
-    @tag_id = params['tag_id']
-    @merchant_id = params['merchant_id']
+    @amount = params['amount'].to_i
+    @day = params['day']
+    @description = params['description']
+    @tag_id = params['tag_id'].to_i
+    @merchant_id = params['merchant_id'].to_i
   end
 
 
   def save
     SqlRunner.run_sql("INSERT INTO transactions 
-                      (amount, date, tag_id, merchant_id) 
-                      VALUES ('#{@amount}', '#{@date}', '
-                      #{@tag_id}', '#{@merchant_id}'")
+                      (amount, day, description, tag_id, merchant_id) 
+                      VALUES ('#{@amount}', '#{@day}', '#{@description}', 
+                      '#{@tag_id}', '#{@merchant_id}')")
     return last_entry
   end
 
 
   def last_entry
-    sql = "SELECT * FROM transactions ORDER BY DESC limit 1"
+    sql = "SELECT * FROM transactions ORDER BY id DESC limit 1"
     return Transaction.map_item(sql)
   end
 
@@ -49,10 +53,18 @@ class Transaction
     return result.first
   end
 
+
   def self.find(id)
     transaction = SqlRunner.run_sql("SELECT * FROM transactions WHERE id = #{id}")
     result = Transaction.new(transaction[0])
+    return result
   end
+
+
+  def self.delete_all
+    SqlRunner.run_sql("DELETE FROM transactions")
+  end
+
 
   def self.destroy(id)
     SqlRunner.run_sql("DELETE * FROM transactions WHERE id = #{id}")

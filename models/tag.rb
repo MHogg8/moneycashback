@@ -23,8 +23,8 @@ class Tag
   end
 
 
-  def update
-    SqlRunner.run_sql("UPDATE tags SET name = '{#params['name']}'") #think this is params{name} because it is the update and is a new param not the initial one, check this out as not quite clear. Obviously the syntax for this different but it would be good to be clear in teh reason why this - actually - is it not because you are passing it a new param and not the intialzie one. This is teh only instance in which we change the data out with the intialization. 
+  def update(params)
+    SqlRunner.run_sql("UPDATE tags SET name = '#{params['name']}' Where id = #{id}") #think this is params{name} because it is the update and is a new param not the initial one, check this out as not quite clear. Obviously the syntax for this different but it would be good to be clear in teh reason why this - actually - is it not because you are passing it a new param and not the intialzie one. This is teh only instance in which we change the data out with the intialization. 
   end
 
 

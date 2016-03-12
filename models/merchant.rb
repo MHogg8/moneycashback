@@ -25,8 +25,8 @@ class Merchant
   end
 
 
-  def update
-    SqlRunner.run_sql("UPDATE merchants SET name = #'{params['name']}'")
+  def update(params)
+    SqlRunner.run_sql("UPDATE merchants SET name = '#{params['name']}' Where id = #{id}")
   end
 
 
@@ -45,14 +45,14 @@ class Merchant
 
   def self.all
     sql = "SELECT * FROM merchants"
-    result = Merchants.map_items(sql)
+    result = Merchant.map_items(sql)
   end
 
 
   def self.find(id)
     transaction = SqlRunner.run_sql("SELECT * FROM merchants WHERE id = #{id}")
     result = Merchant.new(transaction[0])
-    return  result
+    return result
   end
 
 

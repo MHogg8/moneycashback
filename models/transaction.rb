@@ -3,11 +3,11 @@ require_relative('../db/sql_runner')
 
 class Transaction
 
-  attr_reader :id, :amount, :date, :tag_id, :merchant_id
+  attr_reader :id, :amount, :day, :description, :tag_id, :merchant_id
 
   def initialize(params)
     @id = nil || params['id']
-    @amount = params['amount'].to_i
+    @amount = params['amount'].to_f
     @day = params['day']
     @description = params['description']
     @tag_id = params['tag_id'].to_i
@@ -32,12 +32,12 @@ class Transaction
 
   def self.all
     sql = "SELECT * FROM transactions"
-    SqlRunner.run_sql(sql)
+    return Transaction.map_items(sql)
   end
 
 
   def update
-    SqlRunner.run_sql("UPDATE transactions SET name = '#{params['name']}'")
+    SqlRunner.run_sql("UPDATE transactions SET amount = '#{params[amount]}', day = '#{params['day']}', description = '#{params['description']}', tag_id = '#{params[tag_id]}', merchant_id = '#{params[merchant_id]} WHERE id = #{id}")
   end
 
 
@@ -48,10 +48,10 @@ class Transaction
   end
 
 
-  def self.map_item(sql)
-    result = SqlRunner.run_sql(sql)
-    return result.first
-  end
+ def self.map_item(sql)
+   result = Transaction.map_items(sql)
+   return result.first
+ end
 
 
   def self.find(id)

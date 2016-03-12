@@ -1,0 +1,22 @@
+<h2> Your Transactions </h2>
+
+<% @transactions.each do |transaction| %>
+
+<h3>Amount:</h3>
+<p><%= transaction.amount %></p>
+
+<h3>Date of purchase:</h3>
+<p><%= transaction.day %></p>
+
+<h3>Description:</h3>
+<p><%= transaction.description %></p>
+
+<h3>Merchant</h3>
+<p><%= transaction.merchant_id %></p>
+
+<h3>Tags</h3>
+<p><%= transaction.tag_id %></p>
+
+<hr>
+
+<% end %>

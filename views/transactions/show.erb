@@ -1,0 +1,29 @@
+<h1>Here's the details</h1>
+
+<h2> Amount:</h2>
+<%= @transaction.amount %>
+
+<h2> Date:</h2>
+<%= @transaction.day %>
+
+<h2> Description:</h2>
+<%= @transaction.description %>
+
+<h2> Merchant:</h2>
+<%= @transaction.merchant_id %>
+
+<h2> Tag:</h2>
+<%= @transaction.tag_id %>
+
+<ul>
+  <li>
+  <form action='/transactions/<%= @transaction.id %>/edit' method="get">
+  <input type='submit' value="Edit">
+  </form>
+  </li>
+  <li>
+  <form action="/transactions/<%= @transaction.id %>/delete" method="post">
+  <input type = "submit" value="Delete">
+  </li>
+</form>
+</ul>

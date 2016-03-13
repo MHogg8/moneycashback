@@ -30,3 +30,8 @@ post '/merchants/:id' do
   @merchant.update(params)
   redirect to "/merchants/#{params['id']}"
 end
+
+post '/merchants/:id/delete' do
+ Merchant.destroy(params[:id])
+ redirect to '/merchants'
+end

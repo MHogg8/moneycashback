@@ -1,17 +1,18 @@
 
-<form action="/transactions" method="post">
+
+<form action="/transactions/<%= @transaction.id %>" method="post">
   
   <label>Amount</label>
-  <input type="number" step=0.01 name="amount" placeholder="£0.00">
+  <input type="number" step=0.01 name="amount" value=<%= @transaction.amount %>>
 
 
   <label>Day</label>
-  <input type="date" name="day" placeholder="dd/mm/yyyy">
+  <input type="date" name="day" value="<%= @transaction.day %>">
 
   <label>Description</label>
-  <input type="text" name="description" placeholder="spend details">
+  <input type="text" name="description" value="<%=  @transaction.description%>">
 
-  <label>Merchant</label>
+  <label>Merchant</label> 
   <select name="merchant_id">
   <% @merchants.each do |merchant| %>
     <option value='<%= merchant.id %>'><%= merchant.name %></option>
@@ -25,7 +26,7 @@
   <% end %>
   </select>
 
-  <input type="submit" value="Add Transaction">
+  <input type="submit" value="Edit Transaction">
 
 
 </form>

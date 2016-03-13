@@ -36,8 +36,14 @@ class Transaction
   end
 
 
-  def update
-    SqlRunner.run_sql("UPDATE transactions SET amount = '#{params[amount]}', day = '#{params['day']}', description = '#{params['description']}', tag_id = '#{params[tag_id]}', merchant_id = '#{params[merchant_id]} WHERE id = #{id}")
+  def update(params)
+    SqlRunner.run_sql("UPDATE transactions SET 
+      amount = #{params['amount']}, 
+      day = '#{params['day']}', 
+      description = '#{params['description']}', 
+      tag_id = '#{params['tag_id']}', 
+      merchant_id = '#{params['merchant_id']}' 
+      WHERE id = #{id}")
   end
 
 
@@ -67,7 +73,7 @@ class Transaction
 
 
   def self.destroy(id)
-    SqlRunner.run_sql("DELETE * FROM transactions WHERE id = #{id}")
+    SqlRunner.run_sql("DELETE FROM transactions WHERE id = #{id}")
   end
 
 end

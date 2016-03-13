@@ -1,1 +1,14 @@
 <h2> <%= @merchant.name %></h2>
+
+
+<ul>
+  <li>
+  <form action='/merchants/<%= @merchant.id %>/edit' method="get">
+  <input type='submit' value="Edit">
+  </form>
+  </li>
+</form>
+</ul>
+
+<!-- if possible can we put the delete function back in but say you can't delete this just now as it is still tied to a transaction, please change the transaction merchant before deleting this merchant same for tags. -->
+

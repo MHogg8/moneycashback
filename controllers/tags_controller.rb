@@ -30,3 +30,8 @@ post '/tags/:id' do
   @tag.update(params)
   redirect to "/tags/#{params['id']}"
 end
+
+post '/tags/:id/delete' do
+ Tag.destroy(params[:id])
+ redirect to '/tags'
+end

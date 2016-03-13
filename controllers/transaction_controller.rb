@@ -13,8 +13,31 @@ get '/transactions/new' do
   erb(:'transactions/new')
 end
 
-post "/transactions" do
+post '/transactions' do
   @transaction = Transaction.new(params)
   @transaction.save
   redirect to '/transactions'
+end
+
+get '/transactions/:id' do
+  @transaction = Transaction.find(params[:id])
+  erb(:'transactions/show')
+end
+
+get '/transactions/:id/edit' do
+  @merchants = Merchant.all
+  @tags = Tag.all
+  @transaction =Transaction.find(params[:id])
+  erb(:'transactions/edit')
+end
+
+post  '/transactions/:id' do
+  @transaction = Transaction.new(params)
+  @transaction.update(params)
+  redirect to "/transactions/#{params['id']}"
+end
+
+post '/transactions/:id/delete' do
+ Transaction.destroy(params[:id])
+ redirect to '/transactions'
 end

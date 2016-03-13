@@ -57,7 +57,7 @@ class Merchant
 
 
   def self.destroy(id)
-    SqlRunner.run_sql("DELETE * FROM merchants WHERE id = #{id}")
+    SqlRunner.run_sql("DELETE FROM merchants WHERE id = #{id}")
   end
 
 

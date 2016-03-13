@@ -1,0 +1,31 @@
+
+<form action="/transactions" method="post">
+  
+  <label>Amount</label>
+  <input type="number" step="any" name="amount" placeholder="e.g. 18.00">
+
+
+  <label>Day</label>
+  <input type="date" name="day" placeholder="dd/mon/yyyy">
+
+  <label>Description</label>
+  <input type="text" name="description" placeholder="spend details">
+
+  <label>Merchant</label>
+  <select name="merchant_id">
+  <% @merchants.each do |merchant| %>
+    <option value='<%= merchant.id %>'><%= merchant.name %></option>
+  <% end %>
+  </select>
+  
+  <label>Tag</label>
+  <select name="tag_id">
+  <% @tags.each do |tag| %>
+    <option value='<%= tag.id %>'><%= tag.name %></option>
+  <% end %>
+  </select>
+
+  <input type="submit" value="Add Transaction">
+
+
+</form>

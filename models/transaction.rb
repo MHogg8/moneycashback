@@ -18,8 +18,8 @@ class Transaction
   def save
     SqlRunner.run_sql("INSERT INTO transactions 
                       (amount, day, description, tag_id, merchant_id) 
-                      VALUES ('#{@amount}', '#{@day}', '#{@description}', 
-                      '#{@tag_id}', '#{@merchant_id}')")
+                      VALUES (#{@amount}, '#{@day}', '#{@description}', 
+                      #{@tag_id}, #{@merchant_id})")
     return last_entry
   end
 

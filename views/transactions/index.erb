@@ -12,18 +12,17 @@
 <p><%= transaction.description %></p>
 
 <h3>Merchant</h3>
-<p><%= transaction.merchant_id %></p> 
-<% for merchant in @tags %>
-<% if merchant.id == transaction.merchant_id %>
-  <p><%= merchant.name %></p> 
-  <% end %> 
+
+<% for merchant in @merchants %>
+<% if merchant.id.to_i == transaction.merchant_id%>
+<%= merchant.name %>
+<% end %>
 <% end %>
 
 <h3>Tags</h3>
-<p><%= transaction.tag_id %></p> 
 <% for tag in @tags %>
-<% if tag.id == transaction.tag_id %>
-<%= tag.id.name %>
+<% if tag.id.to_i == transaction.tag_id%>
+<%= tag.name %>
 <% end %>
 <% end %>
 

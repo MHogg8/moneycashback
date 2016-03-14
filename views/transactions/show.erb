@@ -10,10 +10,20 @@
 <%= @transaction.description %>
 
 <h2> Merchant:</h2>
-<%= @transaction.merchant_id %>
+<% for merchant in @merchants %>
+<% if merchant.id.to_i == @transaction.merchant_id%>
+<%= merchant.name %>
+<% end %>
+<% end %>
 
 <h2> Tag:</h2>
-<%= @transaction.tag_id %>
+<% for tag in @tags %>
+<% if tag.id.to_i == @transaction.tag_id%>
+<%= tag.name %>
+<% end %>
+<% end %>
+
+
 
 <ul>
   <li>

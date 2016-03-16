@@ -4,11 +4,55 @@
 <ul>
   <li>
   <form action='/merchants/<%= @merchant.id %>/edit' method="get">
-  <input type='submit' value="Edit">
+  <input type='submit' value="Edit <%= @merchant.name  %>">
   </form>
   </li>
 </form>
 </ul>
 
 <!-- if possible can we put the delete function back in but say you can't delete this just now as it is still tied to a transaction, please change the transaction merchant before deleting this merchant same for tags. -->
+
+<h2>Total:</h2>
+<% score = 0 %>
+<% for transaction in @transactions %>
+<% if transaction.merchant_id == @merchant.id %>
+<% score += transaction.amount %>
+<% end %>
+<% end %>
+<p> You've spent £<%=sprintf "%.2f" %  score %> at <%= @merchant.name %></p>
+
+<hr>
+
+<h2> Your Transactions </h2>
+<% @transactions.each do |transaction| %>
+<% if transaction.merchant_id == @merchant.id %>
+
+
+<h3>Amount:</h3>
+<p><%= sprintf "%.2f" % transaction.amount %></p>
+
+<h3>Date of purchase:</h3>
+<p><%= transaction.day %></p>
+
+<h3>Description:</h3>
+<p><%= transaction.description %></p>
+
+<h3>Merchant</h3>
+
+<% for merchant in @merchants %>
+<% if merchant.id == transaction.merchant_id%>
+<%= merchant.name %>
+<% end %>
+<% end %>
+
+<h3>Tags</h3>
+<% for tag in @tags %>
+<% if tag.id == transaction.tag_id%>
+<%= tag.name %>
+<% end %>
+<% end %>
+
+<hr>
+<% end %>
+<% end %>
 

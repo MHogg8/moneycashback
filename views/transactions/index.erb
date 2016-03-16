@@ -1,31 +1,58 @@
-<h2> Your Transactions </h2>
-
-<% @transactions.each do |transaction| %>
-
-<h3>Amount:</h3>
-<p><%= transaction.amount %></p>
-
-<h3>Date of purchase:</h3>
-<p><%= transaction.day %></p>
-
-<h3>Description:</h3>
-<p><%= transaction.description %></p>
-
-<h3>Merchant</h3>
-
-<% for merchant in @merchants %>
-<% if merchant.id.to_i == transaction.merchant_id%>
-<%= merchant.name %>
+<div class="total">
+<h2>Total:</h2>
+<% score = 0 %>
+<% for transaction in @transactions %>
+<% score += transaction.amount %>
 <% end %>
-<% end %>
+<p>£<%= sprintf "%.2f" % score %></p>
+</div>
 
-<h3>Tags</h3>
-<% for tag in @tags %>
-<% if tag.id.to_i == transaction.tag_id%>
-<%= tag.name %>
-<% end %>
-<% end %>
 
-<hr>
+<!-- <audio controls autoplay> 
+  <source src="https://soundcloud.com/ghostbeemusic/no-8">
+</audio> -->
 
-<% end %>
+<h2> Transactions </h2>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Merchant</th>
+      <th>Tag</th>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>View</th>
+    </tr>
+      </thead>
+       <tbody>
+
+            <% @transactions.each do |transaction| %>
+              <tr>
+
+                <% for merchant in @merchants %>
+                <% if merchant.id == transaction.merchant_id%>
+                <td><%= merchant.name %></td>
+                <% end %>
+                <% end %>
+
+                <% for tag in @tags %>
+                <% if tag.id == transaction.tag_id%>
+                <td><%= tag.name %></td>
+                <% end %>
+                <% end %>
+        
+                <td><%= transaction.day %></td>
+
+                <td>£<%= sprintf "%.2f" % transaction.amount %></td>
+                
+                <td><%= transaction.description %></td>
+
+                <td><a href="/transactions/<%= transaction.id %>">View</a>
+
+              </tr>
+
+            <% end %>
+      </tbody>
+

@@ -60,7 +60,7 @@ class Transaction
  end
 
 
-  def self.find(id)
+  def self.find(id) #should be able to change this one slightly to return all tags.
     transaction = SqlRunner.run_sql("SELECT * FROM transactions WHERE id = #{id}")
     result = Transaction.new(transaction[0])
     return result

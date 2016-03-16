@@ -44,3 +44,6 @@ post '/transactions/:id/delete' do
  Transaction.destroy(params[:id])
  redirect to '/transactions'
 end
+
+#####################################################
+

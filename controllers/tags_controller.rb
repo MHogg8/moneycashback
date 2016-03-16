@@ -1,6 +1,6 @@
 require_relative('../models/tag')
 
-get '/tags' do
+get '/tags' do #if I want to add the total to all pages then Trnsaction.all needs to be available in all?! 
   @tags = Tag.all
   erb(:'tags/index')
 end
@@ -17,11 +17,15 @@ end
 
 get '/tags/:id' do
   @tag= Tag.find(params[:id])
+  @tags = Tag.all   #maybe neccessary for the tags transactions stuff
+  @transactions =Transaction.all
+  @merchants = Merchant.all
   erb(:'tags/show')
 end
 
 get '/tags/:id/edit' do
   @tag = Tag.find(params[:id])
+
   erb(:'tags/edit')
 end
 

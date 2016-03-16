@@ -1,4 +1,5 @@
-<h1>Here's the details</h1>
+<div class="showme">
+<h2>Here's the details</h2>
 
 <h2> Amount:</h2>
 <%= @transaction.amount %>
@@ -6,8 +7,7 @@
 <h2> Date:</h2>
 <%= @transaction.day %>
 
-<h2> Description:</h2>
-<%= @transaction.description %>
+<h2> Description:</h2> <%= @transaction.description %>
 
 <h2> Merchant:</h2>
 <% for merchant in @merchants %>
@@ -22,18 +22,17 @@
 <%= tag.name %>
 <% end %>
 <% end %>
+</div>
 
-
-
-<ul>
-  <li>
+<div class="edit">
   <form action='/transactions/<%= @transaction.id %>/edit' method="get">
   <input type='submit' value="Edit">
   </form>
-  </li>
-  <li>
+</div>
+
+<div class="delete">
   <form action="/transactions/<%= @transaction.id %>/delete" method="post">
   <input type = "submit" value="Delete">
-  </li>
-</form>
-</ul>
+  </form>
+</div>
+

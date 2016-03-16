@@ -2,8 +2,56 @@
 <ul>
   <li>
   <form action='/tags/<%= @tag.id %>/edit' method="get">
-  <input type='submit' value="Edit">
+  <input type='submit' value="Edit <%= @tag.name %> Tag">
   </form>
   </li>
 </form>
 </ul>
+
+
+
+
+<h2>Total:</h2>
+<% score = 0 %>
+<% for transaction in @transactions %>
+<% if transaction.tag_id == @tag.id %>
+<% score += transaction.amount %>
+<% end %>
+<% end %>
+<p> You've spent £<%=sprintf "%.2f" %  score %> on <%= @tag.name %></p>
+
+<hr>
+
+<h2> Your <%= @tag.name %> Transactions </h2>
+<% @transactions.each do |transaction| %>
+<% if transaction.tag_id == @tag.id %>
+
+
+<h3>Amount:</h3>
+<p><%= sprintf "%.2f" % transaction.amount %></p>
+
+<h3>Date of purchase:</h3>
+<p><%= transaction.day %></p>
+
+<h3>Description:</h3>
+<p><%= transaction.description %></p>
+
+<h3>Merchant</h3>
+
+<% for merchant in @merchants %>
+<% if merchant.id == transaction.merchant_id%>
+<%= merchant.name %>
+<% end %>
+<% end %>
+
+<h3>Tags</h3>
+<% for tag in @tags %>
+<% if tag.id == transaction.tag_id%>
+<%= tag.name %>
+<% end %>
+<% end %>
+
+<hr>
+<% end %>
+<% end %>
+

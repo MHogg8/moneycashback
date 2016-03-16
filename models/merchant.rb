@@ -8,7 +8,7 @@ class Merchant
   attr_reader :id, :name
 
   def initialize(params)
-    @id = nil || params['id']
+    @id = nil || params['id'].to_i
     @name = params['name']
   end
 

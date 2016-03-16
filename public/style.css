@@ -1,0 +1,243 @@
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 6em; 
+  text-align: center;
+  line-height: 150px;
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+  text-shadow: 3px 3px rgba(123, 123, 123, 1), 6px 6px rgba(255, 255, 255, 1), 9px 9px rgba(0, 0, 0, 1);
+  color: green;
+  margin-bottom: 1px;
+}
+
+h2 {
+  margin:0;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  color: rgba(0, 0, 0, .7);
+}
+
+h3 {
+  font-weight: 900;
+}
+
+h6 {
+  margin:0 auto;
+}
+
+header {
+  position: fixed;
+  top:0;
+  background-color: rgba(144,238,144, 0.99);
+  margin: 0 auto;
+  width: 100%;
+  height: 150px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: rgba(255,255,255, 1);
+}
+
+body {
+  margin:0;
+  margin-top: 150px;
+  font-family: 'Orbitron', sans-serif;
+
+
+}
+
+section {
+  background-color: rgba(144,238,144, 0.4);
+  font-size: 2em;
+  color: green;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
+  padding-top: 1px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(144,238,144, 0.99);
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  margin:0;
+}
+
+hr {
+  margin-bottom: 0;
+}
+
+table{
+  text-align: left;
+  width:100%;
+  padding-top: 10px;
+  color: green;
+}
+
+th{
+  background-color: rgba(0,0,0,1);
+  color: lightgreen;
+}
+
+
+thead:hover{
+  background-color: green;
+}
+
+tr {
+  padding-left: 50px;
+  color: black;
+  
+
+}
+
+tr:hover{
+  background-color: rgba(20,20, 20, 0.8);
+  color: rgba(144,238,144, 1);
+  border: 2px solid  red;
+
+}
+
+a {
+  text-decoration: none;
+  color: lightseagreen;
+  text-shadow: 1px 1px rgba(123, 123, 123, 1);
+}
+
+li {
+  list-style:  none;
+}
+
+.transdisplay {
+  display: inline-block;
+  background-color: rgba(144,238,144, 0.3); 
+  border-style: solid;
+  border-color: rgba(255,255,255, 0.5);
+  margin: 20px auto;
+  width: 30%;
+  height: 450px;
+  padding-left: 10px;
+  margin-left: 5px;
+  font-size: 25px;
+  line-height: 12px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.transdisplay h3{
+  color: black;
+}
+
+.total {
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  height: 80px;
+  padding: 35px;
+  font-size: 18px;
+  line-height: 15px;
+  color: red;
+  background-color: rgba(20,20, 20, 0.1);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+}
+
+.showme {
+  text-align: center;
+  width: 500px;
+  margin: 30px auto;
+  line-height: 20px;
+  height: 500px;
+
+}
+.showme h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 30px;
+}
+.edit{
+  background-color: rgba(144,238,144, 0.8); 
+  position: fixed;
+  left: 10px;
+  width: 300px;
+  height: 500px;
+  bottom: 50px;
+}
+.delete{
+  background-color: rgba(144,238,144, 0.8); 
+  position: fixed;
+  right: 10px;
+  width: 300px;
+  bottom: 50px;
+  height: 500px;
+}
+
+.nav {
+  position: fixed;
+  display: inline-block;
+  right: 1px;
+  top: 0px;
+  line-height: 14px;
+  margin: 0;
+  
+}
+
+.nav ul li:hover {
+  background-color: rgba(255, 255, 255, .4); 
+
+}
+.nav ul{
+  padding: 0;
+  margin: 0;
+
+}
+.nav ul li {
+  margin-bottom: 3px;
+  border: 2px solid rgba(144,238,144, 0.1); 
+  padding: 10px;
+  text-align: left;
+  background-color: rgba(20,20, 20, 0.1);
+  width: 120px;
+  color: black;
+  font-size: 16px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
+
+}
+
+.add {
+  display: inline-block;
+  background-color: red;
+  font-size: 12px;
+  position: fixed;
+  padding: 10px;
+  width: 125px;
+  right: 0px;
+  text-align: left;
+}
+
+.add:hover {
+  background-color: pink; 
+
+}
+
+
+.addTable {
+  display: inline-block;
+  background-color: red;
+  font-size: 12px;
+  position: fixed;
+  padding: 10px;
+  width: 125px;
+  top: 150px;
+  right: 0px;
+  text-align: left;
+}
+
+.addTable:hover {
+  background-color: pink; 
+
+}

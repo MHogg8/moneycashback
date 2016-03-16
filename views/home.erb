@@ -1,0 +1,45 @@
+<div class="total">
+<h2>Total:</h2>
+<% score = 0 %>
+<% for transaction in @transactions %>
+<% score += transaction.amount %>
+<% end %>
+<%= sprintf "%.2f" % score %>
+</div>
+
+<div class="add">
+  <a href="/transactions/new"><h2>New Transaction</h2></a>
+</div>
+
+
+<h2> Most Recent Transactions </h2>
+<% @transactions.last(3).each do |transaction| %>
+
+<div class="transdisplay">
+<h3>Amount:</h3>
+<p>£<%= sprintf "%.2f" % transaction.amount %></p>
+
+<h3>Date of purchase:</h3>
+<p><%= transaction.day %></p>
+
+<h3>Description:</h3>
+<p><%= transaction.description %></p>
+
+<h3>Merchant</h3>
+
+<% for merchant in @merchants %>
+<% if merchant.id == transaction.merchant_id%>
+<%= merchant.name %>
+<% end %>
+<% end %>
+
+<h3>Tags</h3>
+<% for tag in @tags %>
+<% if tag.id == transaction.tag_id%>
+<%= tag.name %>
+<% end %>
+<% end %>
+</div>
+
+
+<% end %>

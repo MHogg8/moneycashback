@@ -1,9 +1,22 @@
 <h2> Merchants </h2>
-
+<table>
+  <thead>
+    <tr>
+  
+      <th>Merchant Name</th>
+      <th>View</th>
+    </tr>
+      </thead>
+       <tbody>
+<tr>
 <% @merchants.each do |merchant| %>
 
-<h3> Name:</h3> <h4><%= merchant.name %></h4>
-
-<hr>
-
+<td><%= merchant.name %></td>
+<td><a href="/merchants/<%= merchant.id %>">View</a></td>
+</tr>
 <% end %>
+</tbody>
+
+<div class="addTable">
+  <a href="/transactions/new"><h2>New Merchant</h2></a>
+</div>

@@ -1,9 +1,23 @@
 <h2> Tags </h2>
 
+<table>
+  <thead>
+    <tr>
+  
+      <th>Tag Name</th>
+      <th>View</th>
+    </tr>
+      </thead>
+       <tbody>
+<tr>
 <% @tags.each do |tag| %>
 
-<h3> Name:</h3> <h4><%= tag.name %></h4>
-
-<hr>
-
+<td><%= tag.name %></td>
+<td><a href="/tags/<%= tag.id %>">View</a></td>
+</tr>
 <% end %>
+</tbody>
+
+<div class="addTable">
+  <a href="/transactions/new"><h2>New Tags</h2></a>
+</div>

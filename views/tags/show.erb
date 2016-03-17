@@ -1,13 +1,6 @@
-<h2> <%= @tag.name %></h2>
-<ul>
-  <li>
-  <form action='/tags/<%= @tag.id %>/edit' method="get">
-  <input type='submit' value="Edit <%= @tag.name %> Tag">
-  </form>
-  </li>
-</form>
-</ul>
-
+<div class="headline">
+<h1> <%= @tag.name %></h1>
+</div>
 
 
 
@@ -20,38 +13,64 @@
 <% end %>
 <p> You've spent £<%=sprintf "%.2f" %  score %> on <%= @tag.name %></p>
 
+<ul>
+  <li>
+  <form action='/tags/<%= @tag.id %>/edit' method="get">
+  <input type='submit' value="Edit <%= @tag.name %> Tag">
+  </form>
+  </li>
+</ul>
+
+
 <hr>
 
 <h2> Your <%= @tag.name %> Transactions </h2>
-<% @transactions.each do |transaction| %>
-<% if transaction.tag_id == @tag.id %>
+<table>
+  <thead>
+    <tr>
+      <th>Merchant</th>
+      <th>Tag</th>
+      <th>Date</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>View</th>
+    </tr>
+      </thead>
+       <tbody>
+
+            <% @transactions.each do |transaction| %>
+            <% if transaction.tag_id == @tag.id %>
+
+            <tr>
+
+            <% for merchant in @merchants %>
+            <% if merchant.id == transaction.merchant_id%>
+            <td><%= merchant.name %></td>
+            <% end %>
+            <% end %>
+
+            <% for tag in @tags %>
+            <% if tag.id == transaction.tag_id%>
+            <td><%= tag.name %></td>
+            <% end %>
+            <% end %>
+
+            <td><%= transaction.day %></td>
+
+            <td><%= sprintf "%.2f" % transaction.amount %></td>
 
 
-<h3>Amount:</h3>
-<p><%= sprintf "%.2f" % transaction.amount %></p>
+            <td><%= transaction.description %></td>
 
-<h3>Date of purchase:</h3>
-<p><%= transaction.day %></p>
+            <td><a href="/transactions/<%= transaction.id%>">View</a></td>
 
-<h3>Description:</h3>
-<p><%= transaction.description %></p>
+            </tr>
+        <% end %>
+        <% end %>
+        
+        </tbody>
 
-<h3>Merchant</h3>
 
-<% for merchant in @merchants %>
-<% if merchant.id == transaction.merchant_id%>
-<%= merchant.name %>
-<% end %>
-<% end %>
-
-<h3>Tags</h3>
-<% for tag in @tags %>
-<% if tag.id == transaction.tag_id%>
-<%= tag.name %>
-<% end %>
-<% end %>
-
-<hr>
-<% end %>
-<% end %>
+        
+</table>
 

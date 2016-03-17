@@ -8,6 +8,7 @@ get '/transactions' do
 end
 
 get '/transactions/new' do
+  @transactions = Transaction.all
   @merchants = Merchant.all
   @tags =Tag.all
   erb(:'transactions/new')

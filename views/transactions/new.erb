@@ -1,31 +1,45 @@
+<div class="total">
+<h2>Total:</h2>
+<% score = 0 %>
+<% for transaction in @transactions %>
+<% score += transaction.amount %>
+<% end %>
+<p>£<%= sprintf "%.2f" % score %></p>
+</div>
 
+<div class="formtrans">
 <form action="/transactions" method="post">
   
   <label>Amount</label>
+  <br>  
   <input type="number" step="any" name="amount" placeholder="£0.00">
-
-
+<br>
   <label>Day</label>
+  <br>
   <input type="date" name="day" placeholder="dd/mm/yyyy">
-
+<br>
   <label>Description</label>
+  <br>
   <input type="text" name="description" placeholder="spend details">
-
+<br>
   <label>Merchant</label>
+  <br>
   <select name="merchant_id">
   <% @merchants.each do |merchant| %>
     <option value='<%= merchant.id %>'><%= merchant.name %></option>
   <% end %>
   </select>
-  
+  <br>
   <label>Tag</label>
+  <br>
   <select name="tag_id">
   <% @tags.each do |tag| %>
     <option value='<%= tag.id %>'><%= tag.name %></option>
   <% end %>
   </select>
-
+<br>
   <input type="submit" value="Add Transaction">
 
 
 </form>
+</div>

@@ -4,7 +4,7 @@
 <% for transaction in @transactions %>
 <% score += transaction.amount %>
 <% end %>
-<p>£<%= sprintf "%.2f" % score %></p>
+£<%= sprintf "%.2f" % score %>
 </div>
 
 
@@ -13,7 +13,6 @@
 </audio> -->
 
 <h2> Transactions </h2>
-
 
 <table>
   <thead>
@@ -30,7 +29,6 @@
 
             <% @transactions.each do |transaction| %>
               <tr>
-
                 <% for merchant in @merchants %>
                 <% if merchant.id == transaction.merchant_id%>
                 <td><%= merchant.name %></td>
@@ -49,10 +47,11 @@
                 
                 <td><%= transaction.description %></td>
 
-                <td><a href="/transactions/<%= transaction.id %>">View</a>
-
+                <td><a href="/transactions/<%= transaction.id %>">View</a></td>
               </tr>
-
             <% end %>
       </tbody>
 
+  <div class="addTable">
+    <a href="/transactions/new"><h2>New Transaction</h2></a>
+  </div>

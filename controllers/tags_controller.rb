@@ -2,6 +2,7 @@ require_relative('../models/tag')
 
 get '/tags' do #if I want to add the total to all pages then Trnsaction.all needs to be available in all?! 
   @tags = Tag.all
+  @transactions=Transaction.all
   erb(:'tags/index')
 end
 

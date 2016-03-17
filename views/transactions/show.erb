@@ -24,15 +24,16 @@
 <% end %>
 </div>
 
-<div class="edit">
+  <div class="edit">
   <form action='/transactions/<%= @transaction.id %>/edit' method="get">
   <input type='submit' value="Edit">
   </form>
-</div>
+  </div>
 
-<div class="delete">
+  <div class="delete">
   <form action="/transactions/<%= @transaction.id %>/delete" method="post">
   <input type = "submit" value="Delete">
   </form>
-</div>
+  </div>
+
 

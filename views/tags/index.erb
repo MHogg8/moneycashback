@@ -1,3 +1,12 @@
+<div class="total">
+<h2>Total:</h2>
+<% score = 0 %>
+<% for transaction in @transactions %>
+<% score += transaction.amount %>
+<% end %>
+<p>£<%= sprintf "%.2f" % score %></p>
+</div>
+
 <h2> Tags </h2>
 
 <table>
@@ -19,5 +28,5 @@
 </tbody>
 
 <div class="addTable">
-  <a href="/transactions/new"><h2>New Tags</h2></a>
+  <a href="/tags/new"><h2>New Tags</h2></a>
 </div>

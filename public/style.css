@@ -6,7 +6,9 @@ h1 {
   margin: 0;
   padding: 5px;
   width: 100%;
-  text-shadow: 3px 3px rgba(123, 123, 123, 1), 6px 6px rgba(255, 255, 255, 1), 9px 9px rgba(0, 0, 0, 1);
+  text-shadow: 3px 3px rgba(123, 123, 123, 1), 
+               6px 6px rgba(255, 255, 255, 1), 
+               9px 9px rgba(0, 0, 0, 1);
   color: green;
   margin-bottom: 1px;
 }
@@ -29,6 +31,7 @@ h6 {
 header {
   position: fixed;
   top:0;
+  background: radial-gradient(rgba(144,238,144, 0.3), rgba(144,238,144, 0.6), green);
   background-color: rgba(144,238,144, 0.99);
   margin: 0 auto;
   width: 100%;
@@ -52,7 +55,7 @@ section {
   color: green;
   text-align: center;
   width: 100%;
-  height: 100%;
+  min-height: 550px;
   padding-bottom: 20px;
   padding-top: 1px;
 }
@@ -77,6 +80,10 @@ table{
   width:100%;
   padding-top: 10px;
   color: green;
+
+}
+td {
+  padding: 0px;
 }
 
 th{
@@ -109,6 +116,11 @@ a {
   text-shadow: 1px 1px rgba(123, 123, 123, 1);
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 li {
   list-style:  none;
 }
@@ -127,6 +139,7 @@ li {
   line-height: 12px;
   margin-bottom: 20px;
   border-radius: 20px;
+  box-shadow: 1px 1px 10px #888888;
 }
 
 .transdisplay h3{
@@ -146,35 +159,29 @@ li {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 1);
 }
 
+.total h2{
+  font-size: 18px;
+}
+
 .showme {
   text-align: center;
   width: 500px;
   margin: 30px auto;
   line-height: 20px;
-  height: 500px;
+  min-height: 500px;
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding: 0;
 
 }
 .showme h2 {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   margin-top: 30px;
 }
-.edit{
-  background-color: rgba(144,238,144, 0.8); 
-  position: fixed;
-  left: 10px;
-  width: 300px;
-  height: 500px;
-  bottom: 50px;
-}
-.delete{
-  background-color: rgba(144,238,144, 0.8); 
-  position: fixed;
-  right: 10px;
-  width: 300px;
-  bottom: 50px;
-  height: 500px;
-}
+
+
+
 
 .nav {
   position: fixed;
@@ -217,10 +224,12 @@ li {
   width: 125px;
   right: 0px;
   text-align: left;
+  box-shadow: 1px 1px 10px #888888;
 }
 
 .add:hover {
   background-color: pink; 
+  color: white;
 
 }
 
@@ -235,9 +244,157 @@ li {
   top: 150px;
   right: 0px;
   text-align: left;
+  box-shadow: 1px 1px 10px #888888;
 }
 
 .addTable:hover {
   background-color: pink; 
 
+}
+.form {
+  text-align: center;
+  height: 475px;
+  width: 600px;
+  margin: 20px auto;
+  padding-top: 5px;
+}
+.form h2{
+  margin-top: 75px;
+  padding-bottom: 40px;
+}
+
+.form input[type="text"]{
+  height: 50px;
+  font-size: 30px;
+  padding: 1px;
+  background-color: rgba(144,238,144, 0.2); 
+  border-color: rgba(144,238,144, 0.8); 
+  margin: 10px 0;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+
+}
+
+input[type="submit"] {
+    width: 450px;
+    padding: 5px;
+    margin: 20px 0;
+   
+    height: 50px;
+    background-color: rgba(196,36,36,.8);
+    border-radius: 8px;
+    color: white;
+    text-shadow: 1px 0px 2px rgba(0,0,0,.5);
+    font-size: 1.1em;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    box-shadow: 1px 1px 10px #888888;
+    border: none;
+}
+input[type="submit"]:hover{
+  background-color: rgba(160,36,36,.9);
+  color:lightgrey;
+  box-shadow: none;
+}
+
+.formtrans {
+  height: 505px;
+  width: 900px;
+  margin: 20px auto;
+}
+.formtrans h2{
+  margin-top: 75px;
+  padding-bottom: 40px;
+}
+
+.formtrans input[type="text"]{
+  height: 50px;
+  font-size: 30px;
+  padding: 1px;
+  background-color: rgba(144,238,144, 0.2); 
+  border-color: rgba(144,238,144, 0.8); 
+  margin: 10px 0;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  border-radius: 5px;
+
+}
+
+.formtrans input[type="date"]{
+  height: 50px;
+  font-size: 30px;
+  padding: 1px;
+  background-color: rgba(144,238,144, 0.2); 
+  border-color: rgba(144,238,144, 0.8); 
+  margin: 10px 0;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  border-radius: 5px;
+
+}
+.formtrans input[type="number"]{
+  height: 50px;
+  font-size: 30px;
+  padding: 1px;
+  background-color: rgba(144,238,144, 0.2); 
+  border-color: rgba(144,238,144, 0.8); 
+  margin: 10px 0;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  border-radius: 5px;
+
+}
+
+select {
+  border-color: rgba(144,238,144, 0.8); 
+  font-family: 'Orbitron', sans-serif;
+  height: 20px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  width: 150px;
+}
+.sedit {
+
+  width: 500px;
+  min-height: 555px;
+  margin: 0 auto;
+}
+
+.sedit h2{
+  margin: 30px;
+}
+
+
+.edit{
+  position: fixed;
+  left: 10px;
+  width: 220px;
+  height: 100px;
+  bottom: 50px;
+}
+.delete{
+  position: fixed;
+  right: 250px;
+  width: 220px;
+  bottom: 50px;
+  height: 100px;
+}
+
+.headline h1{
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em; 
+  text-align: center;
+  line-height: 150px;
+  margin: 0;
+  padding: 5px;
+  width: 100%;
+  text-shadow: 3px 3px rgba(123, 123, 123, 1), 
+               6px 6px rgba(255, 255, 255, 1);
+  color: black;
+  margin-bottom: 0px;
+}
+
+hr {
+  size: 1000;
+  color: purple;
 }
